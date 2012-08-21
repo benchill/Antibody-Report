@@ -36,7 +36,7 @@
         <table>
          <thead>
              <th>Blood<br>Group</th>
-             <th>Antigen</th>
+             <th>Antibody</th>
              <th>Antigen<br>Frequency %</th>
              <th>% Donor<br> Compatible</th>
          </thead>
@@ -44,7 +44,7 @@
             <tr>
                 <td>Rh</td>
                 <td><input type="checkbox" name="antigen" value="D" onchange="processForm()"/> D</td>
-                <td><input type="text" id="antFreqD" value="85" name="antFreqC" onchange="compatible('antFreqD','compD')"></td>
+                <td><input type="text" id="antFreqD" value="85" name="antFreqD" onchange="compatible('antFreqD','compD')"></td>
                 <td><input type="text" id="compD" value="15" readonly/></td>        
             </tr>
 
@@ -137,7 +137,7 @@
         <table>
          <thead>
              <th>Blood<br>Group</th>
-             <th>Antigen</th>
+             <th>Antibody</th>
              <th>Antigen<br>Frequency %</th>
              <th>% Donor<br> Compatible</th>
          </thead>
@@ -157,7 +157,7 @@
             </tr>
 
             <tr>
-                <td></td>
+                <td>MNS</td>
                 <td><input type="checkbox" name="antigen" value="M" onchange="processForm()" /> M</td> 
                 <td><input type="text" id="antFreqM" value="78" name="antFreqM" onchange="compatible('antFreqM','compM')"></td>
                 <td><input type="text" id="compM" value="22" readonly /></td>       
@@ -182,6 +182,13 @@
                 <td><input type="checkbox" name="antigen" value="s" onchange="processForm()" /> s</td>
                 <td><input type="text" id="antFreqs" value="89" name="antFreqs" onchange="compatible('antFreqs','comps')"></td>
                 <td><input type="text" id="comps" value="11" readonly /></td>        
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><input type="checkbox" name="antigen" value="U" onchange="processForm()" /> U</td>
+                <td><input type="text" id="antFreqU" value="99.1" name="antFreqU" onchange="compatible('antFreqU','compU')"></td>
+                <td><input type="text" id="compU" value="0.1" readonly /></td>        
             </tr>
 
             <tr>
@@ -219,13 +226,38 @@
             </tr>
            </tbody> 
           </table><br>
-           <input type="checkbox" name="warmAuto" value="warmAuto" onchange="processForm()"> WAA </input><br>
+           <input type="checkbox" name="warmAuto" value="warmAuto" onchange="processForm()"> WAA </input>
+           <select name="warmAutoStrength" onchange="processForm()">
+                <option value="weak">weak</option>
+                <option value="strong">strong</option>
+            </select>
+           <input type="checkbox" name="nonspecificReactivity" value="nonspecificReactivity" onchange="processForm()"> Non-specific reactivity </input>
+           <input type="checkbox" name="preSurgery" value="preSurgery" onchange="processForm()"> Pre-Surgery </input><br>
            <input type="checkbox" name="patientSex" value="male" onchange="processForm()"> male </input><br>
            <input type="checkbox" name="patientSex" value="female" onchange="processForm()"> female  </input>
            <input type="checkbox" name="pregnant" value="pregnant" onchange="processForm()"> pregnant  </input>
-           <input type="checkbox" name="RhImmuno" value="RhImmuno" onchange="processForm()"> Rh Immunoglobulin  </input>
-           <input type="checkbox" name="antTiter" value="antTiter" onchange="processForm()"> Titer </input>
-           <select name="titer" onchange="processForm()">
+           <input type="checkbox" name="RhImmuno" value="RhImmuno" onchange="processForm()"> Rh Immunoglobulin  </input><br>
+           <input type="checkbox" name="antTiter1" value="antTiter1" onchange="processForm()"> Titer 1</input>
+           <select id="selectAntibody1" onchange="=processForm()">
+                <option>Choose antibody</option>
+            </select>
+           <select name="titer1" onchange="processForm()">
+                <option value="<1"><1</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="4">4</option>
+                <option value="8">8</option>
+                <option value="16">16</option>
+                <option value="32">32</option>
+                <option value="64">64</option>
+                <option value="128">128</option>
+                <option value="256">256</option>
+            </select>
+           <input type="checkbox" name="antTiter2" value="antTiter2" onchange="processForm()"> Titer 2</input>
+           <select id="selectAntibody2" onchange="=processForm()">
+                <option>Choose antibody</option>
+            </select>
+           <select name="titer2" onchange="processForm()">
                 <option value="<1"><1</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -238,9 +270,12 @@
                 <option value="256">256</option>
             </select>
            <br>
-           <textarea id="textField"></textarea> 
-<!--            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript">
+           <textarea id="textField"></textarea><br> 
+           <input type="text" id="tempNumberAntibodies" value="0" name="tempNumberAntibodies">
+<!--           <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+           <script src="eloquent.js"></script>
+
+              <script type="text/javascript">
          function SelectText(element) {
             var text = document.getElementById(element);
                 if ($.browser.msie) {
