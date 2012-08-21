@@ -17,10 +17,23 @@ function processForm() {
     var patientPreSurgery;
     var compUnits = new Array();
     var percentCompatible = 1;
-//    var i;
-    var currentlyPregnant = false;
-//    var comp = new Array();
     var patientSexA=0;
+    var currentlyPregnant = false;
+    var numberAntibodies=0;
+    var n=0;
+ // setup time and date format    
+    var now = new Date();
+    var currDate = now.getDate();
+    var currMonth = now.getMonth() + 1;
+    var currYear = now.getFullYear();
+    var currHour = now.getHours();
+    var currMinute = now.getMinutes();
+    if (currMinute<10)
+        {
+            currMinute.toString;
+            currMinute = "0" + currMinute;
+        };
+//    Setup pronouns
     var hisOrHer = function(patientSexA) {
         if(patientSexA == "male") {
             return "his";
@@ -43,8 +56,7 @@ function processForm() {
             return "patient";
         };
     };
-    var numberAntibodies=0;
-    var n=0;
+
 // from Sean W.
         conjoin = function (x) {
      // This function joins the elements of an array using the "Oxford comma".
@@ -107,8 +119,6 @@ function processForm() {
         document.antigenForm.textField.value = "";
     };
 // Populate antibody drop down for titer  http://jsfiddle.net/nExgJ/
-
-
 //dropdown.add(new Option(patientAntibodies[0], "U"), "1");
 //var dropdown = document.antigenForm.selectAntibody1;
 // Loop through the array
@@ -140,16 +150,19 @@ if(tempNumberAntibodies.value!=numberAntibodies)
             dropdown2.add(new Option(patientAntibodies[i], patientAntibodies[i]), i.toString);
         }
 document.antigenForm.tempNumberAntibodies.value = numberAntibodies;
-}   
+};   
  //     }​;
  //  };
 //document.antigenForm.textField.value +=dropdown
 //
 // Surgical patient
-   if(patientPreSurgery===true)
+var presurgery = function()
+   {
+       if(patientPreSurgery===true)
     {
            document.antigenForm.textField.value += "The blood bank needs a new sample within 3 days of surgery because the patient has reactivity against red cell antigens. "; 
     };
+    }
 
  //   if(document.antigenForm.antTiter1.checked && numberAntibodies===1)
 //    {
@@ -159,6 +172,7 @@ document.antigenForm.tempNumberAntibodies.value = numberAntibodies;
 //    else 
     if(patientAntibodies.length >= 1) 
     {
+        presurgery();
         document.antigenForm.textField.value += "The patient has anti-"+conjoin(patientAntibodies)+" alloantibodies. ";
     };
     if(document.antigenForm.antTiter1.checked)
@@ -255,8 +269,17 @@ document.antigenForm.tempNumberAntibodies.value = numberAntibodies;
 
     if(patientSexA !=0 && numberAntibodies>=1) 
     {
-        document.antigenForm.textField.value+="If transfusion is necessary, the patient will receive extended crossmatch compatible " + conjoinB(patientAntibodies)+ "-antigen negative units. ";
-    };   
+        if(document.antigenForm.antigen[0].checked==false)
+        {
+              document.antigenForm.textField.value+="If transfusion is necessary, the patient will receive extended crossmatch compatible " + conjoinB(patientAntibodies)+ "-antigen negative units. ";
+        }
+        else
+        {
+              document.antigenForm.textField.value+="If transfusion is necessary, the patient will receive appropriate extended crossmatch compatible units. ";
+        }; 
+        };
+         
+     
 //        if(patientSexA !=0 && numberAntibodies===2) 
 //    {
 //        document.antigenForm.textField.value+="If transfusion is necessary, the patient will receive extended crossmatch compatible " +patientAntibodies[0]+"- and "+patientAntibodies[1] +"-antigen negative units. ";
@@ -277,48 +300,70 @@ document.antigenForm.tempNumberAntibodies.value = numberAntibodies;
         percentCompatible = percentCompatible * compUnitsA[i]/100;
     };
     percentCompatible = percentCompatible * 100;
+// Display percent compatible units; Anti-D not used in calculation for >1%
     if(numberAntibodies>0 && percentCompatible>1) 
     {
-        document.antigenForm.textField.value+="Approximately "+percentCompatible.toFixed(0)+"% of donor units are expected to be compatible. ";
+        if(document.antigenForm.antigen[0].checked==false)
+        {
+              document.antigenForm.textField.value+="Approximately "+percentCompatible.toFixed(0)+"% of donor units are expected to be compatible. ";
+        }
+        else
+        {
+              document.antigenForm.textField.value+="Approximately "+((percentCompatible)/document.antigenForm.compD.value*100).toFixed()+"% of Rh negative donor units are expected to be compatible. ";;
+        };     
     };
+// Statement for compatible unit < 1%
     if(numberAntibodies>0 && percentCompatible<1) 
     {
         document.antigenForm.textField.value+="Less than 1 percent of donor units are expected to be compatible; considerable time is needed to procure units for this patient. ";
     };
+//
+// Special cases
+//
 // Anti-M, cold reacting with no additional alloantibodies
     if(numberAntibodies===1 && antigen[15].checked)
     {
            document.antigenForm.textField.value = "";
            document.antigenForm.textField.value = "This patient has anti-M. This antibody can be naturally occurring and does not react at body temperature; thus, it is not clinically significant.  If transfusion is necessary, "+heOrShe(patientSexA)+" will receive appropriate pre-warm extended crossmatch compatible units. "; 
     };
+//
 // Anti D due to Rh immunoglobulin
     if(numberAntibodies===1 && antigen[0].checked && document.antigenForm.RhImmuno.checked)
     {
            document.antigenForm.textField.value = "";
            document.antigenForm.textField.value = "This patient has anti-D, likely due to Rh immunoglobulin administration during this pregnancy.  If transfusion is necessary, the Blood Bank will issue extended crossmatch compatible Rh negative units to prevent sensitization to the D antigen. "; 
     };
+//
 // Non-specific reactivity with no alloantibodies 
     if(document.antigenForm.nonspecificReactivity.checked)
     {
            document.antigenForm.textField.value = "";
-           document.antigenForm.textField.value = "The work-up showed non-specific reactivity.  All common clinically significant alloantibodies were ruled out with reagent red blood cells.  The positivity demonstrating in the patient's serum cannot be further characterized at this time.  Should this patient require transfusions in the future, extended crossmatch compatible units will be provided.  "; 
+           document.antigenForm.textField.value += "The work-up showed non-specific reactivity.  All common clinically significant alloantibodies were ruled out with reagent red blood cells.  The positivity demonstrating in the patient's serum cannot be further characterized at this time.  Should this patient require transfusions in the future, extended crossmatch compatible units will be provided.  "; 
     };
-// U antigen in a non-pregnant patient
+//
+// U antigen in a non-pregnant patients
     if(document.antigenForm.antigen[19].checked && currentlyPregnant===false)
     {
            document.antigenForm.textField.value = "";
-           document.antigenForm.textField.value = "This workup identified anti-U in the patient's plasma.  This alloantibody is usually a consequence of previous transfusion or pregnancy and can cause hemolytic disease of the newborn or a transfusion reaction.  Since the U antigen is present in 99.9% of the donors, if transfusion is anticipated, the Blood Bank needs to be notified immediately to order such rare units. It usually takes at least 24 hours to have U-negative units at UAB.  There are no other options for transfusion for this patient. "; 
+           presurgery();
+           document.antigenForm.textField.value += "This workup identified anti-U in the patient's plasma.  This alloantibody is usually a consequence of previous transfusion or pregnancy and can cause hemolytic disease of the newborn or a transfusion reaction.  Since the U antigen is present in 99.9% of the donors, if transfusion is anticipated, the Blood Bank needs to be notified immediately to order such rare units. It usually takes at least 24 hours to have U-negative units at UAB.  There are no other options for transfusion for this patient. "; 
     };
+// 
 // Warm autoantibody and single alloantibody
     if(document.antigenForm.warmAuto.checked && numberAntibodies==1)
     {
            document.antigenForm.textField.value = "";
-           document.antigenForm.textField.value = "This patient has a warm autoantibody and "+patientAntibodies[0]+". The latter is an alloantibody and units for transfusion must lack the "+ patientAntibodies[0]+" antigen.  The autoantibody is weak and probably not clinically significant.  However, it will react with all donor units. Thus, "+heOrShe(patientSexA)+" will receive units that are least incompatible with his plasma and he should be monitored for the small potential for hemolysis during and after the transfusion.  Considerable time is needed to crossmatch units for this patient."; 
+           presurgery();
+           document.antigenForm.textField.value += "This patient has a warm autoantibody and "+patientAntibodies[0]+". The latter is an alloantibody and units for transfusion must lack the "+ patientAntibodies[0]+" antigen.  The autoantibody is weak and probably not clinically significant.  However, it will react with all donor units. Thus, "+heOrShe(patientSexA)+" will receive units that are least incompatible with his plasma and he should be monitored for the small potential for hemolysis during and after the transfusion.  Considerable time is needed to crossmatch units for this patient."; 
     };
 //    document.antigenForm.textField.value += Environment.NewLine;
+//  Signature line
    document.antigenForm.textField.value += "\r\n"; 
    document.antigenForm.textField.value += "\r\n"; 
-   document.antigenForm.textField.value+="Consult performed by:";
+   document.antigenForm.textField.value+="Test interpretation and consult performed by:"+"\r\n";
+
+
+   document.antigenForm.textField.value+="Note signed on "+ currMonth + "/" + currDate + "/" + currYear +" at " + currHour+":"+currMinute+" by .";
 
 //   document.antigenForm.textField.value += conjoin(patientAntibodies);
 //  document.antigenForm.textField.value+=currentlyPregnant
