@@ -220,14 +220,46 @@
            </tbody> 
           </table><br>
            <input type="checkbox" name="warmAuto" value="warmAuto" onchange="processForm()"> WAA </input><br>
-           <input type="checkbox" name="patientSex" value="male" onchange="processForm()"> male </input>
-           <input type="checkbox" name="patientSex" value="female" onchange="processForm()"> female </input>
-           <input type="checkbox" name="pregnant" value="pregnant" onchange="processForm()"> pregnant </input><br>
+           <input type="checkbox" name="patientSex" value="male" onchange="processForm()"> male </input><br>
+           <input type="checkbox" name="patientSex" value="female" onchange="processForm()"> female  </input>
+           <input type="checkbox" name="pregnant" value="pregnant" onchange="processForm()"> pregnant  </input>
+           <input type="checkbox" name="RhImmuno" value="RhImmuno" onchange="processForm()"> Rh Immunoglobulin  </input>
+           <input type="checkbox" name="antTiter" value="antTiter" onchange="processForm()"> Titer </input>
+           <select name="titer" onchange="processForm()">
+                <option value="<1"><1</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="4">4</option>
+                <option value="8">8</option>
+                <option value="16">16</option>
+                <option value="32">32</option>
+                <option value="64">64</option>
+                <option value="128">128</option>
+                <option value="256">256</option>
+            </select>
+           <br>
            <textarea id="textField"></textarea> 
-         </form> 
-        <p></p>
-
-
-        <input type="button" value="Copy" onclick="copy()"><br> 
+<!--            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript">
+         function SelectText(element) {
+            var text = document.getElementById(element);
+                if ($.browser.msie) {
+                 var range = document.body.createTextRange();
+                range.moveToElementText(text);
+                range.select();
+            } else if ($.browser.mozilla || $.browser.opera) {
+             var selection = window.getSelection();
+            var range = document.createRange();
+            range.selectNodeContents(text);
+            selection.removeAllRanges();
+            selection.addRange(range);
+            } else if ($.browser.safari) {
+            var selection = window.getSelection();
+            selection.setBaseAndExtent(text, 0, text, 1);
+            }
+            }
+            </script>
+         <input type="button" value="Select Text" onclick="SelectText('textField')"><br> 
+-->
        </body>
        </html>
