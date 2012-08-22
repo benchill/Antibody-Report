@@ -7,17 +7,18 @@
             table {
                 border:  1px solid black;
                 display:  inline-block;
-            }
+                 }
             td input {
                 width:  200px;
                 
             }
             td input[type="text"] {
                 width:  100px;
+                height: 20px;
             }
             textarea {
                 width:800px; 
-                height:300px;
+                height:200px;
              }
         </style>
         <script type="text/javascript">
@@ -33,7 +34,7 @@
     
     <body>
        <form name="antigenForm">
-        <table>
+        <table cellpadding="1">
          <thead>
              <th>Blood<br>Group</th>
              <th>Antibody</th>
@@ -44,8 +45,8 @@
             <tr>
                 <td>Rh</td>
                 <td><input type="checkbox" name="antigen" value="D" onchange="processForm()"/> D</td>
-                <td><input type="text" id="antFreqD" value="85" name="antFreqD" onchange="compatible('antFreqD','compD')"></td>
-                <td><input type="text" id="compD" value="15" readonly/></td>        
+                <td><input type="text" value="85" name="antFreqD" onchange="compatible('antFreqD','compD')"></td>
+                <td><input type="text" name="compD" value="15" readonly/></td>        
             </tr>
 
             <tr>
@@ -58,83 +59,83 @@
             <tr>
                 <td></td>
                 <td><input type="checkbox" name="antigen" value="E" onchange="processForm()" /> E</td>
-                <td><input type="text" id="antFreqE" value="30" name="antFreqE" onchange="compatible('antFreqE','compE')"></td>
-                <td><input type="text" id="compE" value="70" readonly /></td>       
+                <td><input type="text" value="30" name="antFreqE" onchange="compatible('antFreqE','compE')"></td>
+                <td><input type="text" name="compE" value="70" readonly /></td>       
             </tr> 
 
             <tr>
                 <td></td>
                 <td><input type="checkbox" name="antigen" value="c" onchange="processForm()" /> c</td>
-                <td><input type="text" id="antFreqc" value="80" name="antFreqc" onchange="compatible('antFreqc','compc')"></td>
-                <td><input type="text" id="compc" value="20" readonly /></td>      
+                <td><input type="text"  value="80" name="antFreqc" onchange="compatible('antFreqc','compc')"></td>
+                <td><input type="text" name="compc" value="20" readonly /></td>      
             </tr>
            
             <tr>
                 <td></td>
                 <td><input type="checkbox" name="antigen" value="e" onchange="processForm()" /> e</td>
-                <td><input type="text" id="antFreqe" value="98" name="antFreqe" onchange="compatible('antFreqe','compe')"></td>
-                <td><input type="text" id="compe" value="2" readonly /></td>        
+                <td><input type="text" value="98" name="antFreqe" onchange="compatible('antFreqe','compe')"></td>
+                <td><input type="text" name="compe" value="2" readonly /></td>        
             </tr>
 
             <tr>
                 <td>Kell</td>
                 <td><input type="checkbox" name="antigen" value="K" onchange="processForm()" /> K</td>
-                <td><input type="text" id="antFreqK" value="9" name="antFreqK" onchange="compatible('antFreqK','compK')"></td>
-                <td><input type="text" id="compK" value="91" readonly /></td>        
+                <td><input type="text" value="9" name="antFreqK" onchange="compatible('antFreqK','compK')"></td>
+                <td><input type="text" name="compK" value="91" readonly /></td>        
             </tr>
 
             <tr>
                 <td></td>
                 <td><input type="checkbox" name="antigen" value="Kpa" onchange="processForm()" /> Kp<sup>a</sup></td> 
-                <td><input type="text" id="antFreqKpa" value="2" name="antFreqKpa" onchange="compatible('antFreqKpa','compKpa')"></td>
-                <td><input type="text" id="compKpa" value="98" readonly /></td>       
+                <td><input type="text" value="2" name="antFreqKpa" onchange="compatible('antFreqKpa','compKpa')"></td>
+                <td><input type="text" name="compKpa" value="98" readonly /></td>       
             </tr>
 
             <tr>
                 <td></td>
                 <td><input type="checkbox" name="antigen" value="Jsa" onchange="processForm()" /> Js<sup>a</sup></td>
-                <td><input type="text" id="antFreqJsa" value="0.1" name="antFreqJsa" onchange="compatible('antFreqJsa','compJsa')"></td>
-                <td><input type="text" id="compJsa" value="99.9" readonly /></td>       
+                <td><input type="text"  value="0.1" name="antFreqJsa" onchange="compatible('antFreqJsa','compJsa')"></td>
+                <td><input type="text" name="compJsa" value="99.9" readonly /></td>       
             </tr>
 
             <tr>
                 <td></td>
                 <td><input type="checkbox" name="antigen" value="k" onchange="processForm()" /> k</td>
-                <td><input type="text" id="antFreqk" value="99.9" name="antFreqk" onchange="compatible('antFreqk','compk')"></td>
-                <td><input type="text" id="compk" value="0.1" readonly /></td>      
+                <td><input type="text"  value="99.9" name="antFreqk" onchange="compatible('antFreqk','compk')"></td>
+                <td><input type="text" name="compk" value="0.1" readonly /></td>      
             </tr>
            
             <tr>
                 <td></td>
                 <td><input type="checkbox" name="antigen" value="Kpb" onchange="processForm()" /> Kp<sup>b</sup></td>
-                <td><input type="text" id="antFreqKpb" value="99.9" name="antFreqKpb" onchange="compatible('antFreqKpb','compKpb')"></td>
-                <td><input type="text" id="compKpb" value="0.1" readonly /></td>        
+                <td><input type="text"  value="99.9" name="antFreqKpb" onchange="compatible('antFreqKpb','compKpb')"></td>
+                <td><input type="text" name="compKpb" value="0.1" readonly /></td>        
             </tr>
 
             <tr>
                 <td></td>
                 <td><input type="checkbox" name="antigen" value="Jsb" onchange="processForm()" /> Js<sup>b</sup></td>
-                <td><input type="text" id="antFreqJsb" value="99.9" name="antFreqJsb" onchange="compatible('antFreqJsb','compJsb')"></td>
-                <td><input type="text" id="compJsb" value="0.1" readonly /></td>        
+                <td><input type="text" value="99.9" name="antFreqJsb" onchange="compatible('antFreqJsb','compJsb')"></td>
+                <td><input type="text" name="compJsb" value="0.1" readonly /></td>        
             </tr>
 
             <tr>
                 <td>Duffy </td>
                 <td><input type="checkbox" name="antigen" value="Fya" onchange="processForm()" /> Fy<sup>a</sup></td>
-                <td><input type="text" id="antFreqFya" value="66" name="antFreqFya" onchange="compatible('antFreqFya','compFya')"></td>
-                <td><input type="text" id="compFya" value="34" readonly /></td>        
+                <td><input type="text" value="66" name="antFreqFya" onchange="compatible('antFreqFya','compFya')"></td>
+                <td><input type="text" name="compFya" value="34" readonly /></td>        
             </tr>
 
             <tr>
                 <td></td>
                 <td><input type="checkbox" name="antigen" value="Fyb" onchange="processForm()" /> Fy<sup>b</sup></td>
-                <td><input type="text" id="antFreqFyb" value="85" name="antFreqFyb" onchange="compatible('antFreqFyb','compFyb')"></td>
-                <td><input type="text" id="compFyb" value="15" readonly /></td>        
+                <td><input type="text" value="85" name="antFreqFyb" onchange="compatible('antFreqFyb','compFyb')"></td>
+                <td><input type="text" name="compFyb" value="15" readonly /></td>        
             </tr>
         </tbody>
         </table>
 
-        <table>
+        <table cellpadding="1">
          <thead>
              <th>Blood<br>Group</th>
              <th>Antibody</th>
@@ -145,84 +146,84 @@
               <tr>
                 <td>Kidd</td>
                 <td><input type="checkbox" name="antigen" value="Jka" onchange="processForm()" /> Jk<sup>a</sup></td>
-                <td><input type="text" id="antFreqJka" value="77" name="antFreqC" onchange="compatible('antFreqJka','compJka')"></td>
-                <td><input type="text" id="compJka" value="23" readonly /></td>        
+                <td><input type="text" value="77" name="antFreqJka" onchange="compatible('antFreqJka','compJka')"></td>
+                <td><input type="text" name="compJka" value="23" readonly /></td>        
             </tr>
 
             <tr>
                 <td></td>
                 <td><input type="checkbox" name="antigen" value="Jkb" onchange="processForm()" /> Jk<sup>b</sup></td> 
-                <td><input type="text" id="antFreqJkb" value="72" name="antFreqJkb" onchange="compatible('antFreqJkb','compJkb')"></td>
-                <td><input type="text" id="compJkb" value="28" readonly /></td>       
+                <td><input type="text" value="72" name="antFreqJkb" onchange="compatible('antFreqJkb','compJkb')"></td>
+                <td><input type="text" name="compJkb" value="28" readonly /></td>       
             </tr>
 
             <tr>
                 <td>MNS</td>
                 <td><input type="checkbox" name="antigen" value="M" onchange="processForm()" /> M</td> 
-                <td><input type="text" id="antFreqM" value="78" name="antFreqM" onchange="compatible('antFreqM','compM')"></td>
-                <td><input type="text" id="compM" value="22" readonly /></td>       
+                <td><input type="text" value="78" name="antFreqM" onchange="compatible('antFreqM','compM')"></td>
+                <td><input type="text" name="compM" value="22" readonly /></td>       
             </tr>
 
             <tr>
                 <td></td>
                 <td><input type="checkbox" name="antigen" value="N" onchange="processForm()" /> N</td>
-                <td><input type="text" id="antFreqN" value="72" name="antFreqN" onchange="compatible('antFreqN','compN')"></td>
-                <td><input type="text" id="compN" value="28" readonly /></td>      
+                <td><input type="text" value="72" name="antFreqN" onchange="compatible('antFreqN','compN')"></td>
+                <td><input type="text" name="compN" value="28" readonly /></td>      
             </tr>
            
             <tr>
                 <td></td>
                 <td><input type="checkbox" name="antigen" value="S" onchange="processForm()" /> S</td>
-                <td><input type="text" id="antFreqS" value="55" name="antFreqS" onchange="compatible('antFreqS','compS')"></td>
-                <td><input type="text" id="compS" value="45" readonly /></td>        
+                <td><input type="text" value="55" name="antFreqS" onchange="compatible('antFreqS','compS')"></td>
+                <td><input type="text" name="compS" value="45" readonly /></td>        
             </tr>
 
             <tr>
                 <td></td>
                 <td><input type="checkbox" name="antigen" value="s" onchange="processForm()" /> s</td>
-                <td><input type="text" id="antFreqs" value="89" name="antFreqs" onchange="compatible('antFreqs','comps')"></td>
-                <td><input type="text" id="comps" value="11" readonly /></td>        
+                <td><input type="text" value="89" name="antFreqs" onchange="compatible('antFreqs','comps')"></td>
+                <td><input type="text" name="comps" value="11" readonly /></td>        
             </tr>
 
             <tr>
                 <td></td>
                 <td><input type="checkbox" name="antigen" value="U" onchange="processForm()" /> U</td>
-                <td><input type="text" id="antFreqU" value="99.1" name="antFreqU" onchange="compatible('antFreqU','compU')"></td>
-                <td><input type="text" id="compU" value="0.1" readonly /></td>        
+                <td><input type="text" value="99.1" name="antFreqU" onchange="compatible('antFreqU','compU')"></td>
+                <td><input type="text" name="compU" value="0.1" readonly /></td>        
             </tr>
 
             <tr>
                 <td>P</td>
                 <td><input type="checkbox" name="antigen" value="P" onchange="processForm()" /> P<sub>1</sub></td>
-                <td><input type="text" id="antFreqP" value="80" name="antFreqP" onchange="compatible('antFreqP','compP')"></td>
-                <td><input type="text" id="compP" value="20" readonly /></td>        
+                <td><input type="text" value="80" name="antFreqP" onchange="compatible('antFreqP','compP')"></td>
+                <td><input type="text" name="compP" value="20" readonly /></td>        
             </tr>
 
             <tr>
                 <td>Lewis</td>
                 <td><input type="checkbox" name="antigen" value="Lewis A" onchange="processForm()" /> Le<sup>a</sup></td>
-                <td><input type="text" id="antFreqLea" value="22" name="antFreqLea" onchange="compatible('antFreqLea','compLea')"></td>
-                <td><input type="text" id="compLea" value="78" readonly /></td>        
+                <td><input type="text" value="22" name="antFreqLea" onchange="compatible('antFreqLea','compLea')"></td>
+                <td><input type="text" name="compLea" value="78" readonly /></td>        
             </tr>
 
             <tr>
                 <td></td>
                 <td><input type="checkbox" name="antigen" value="Leb" onchange="processForm()" /> Le<sup>b</sup></td>
-                <td><input type="text" id="antFreqLeb" value="72" name="antFreqLeb" onchange="compatible('antFreqLeb','compLeb')"></td>
-                <td><input type="text" id="compLeb" value="28" readonly /></td>  
+                <td><input type="text" value="72" name="antFreqLeb" onchange="compatible('antFreqLeb','compLeb')"></td>
+                <td><input type="text" name="compLeb" value="28" readonly /></td>  
                 
             <tr>
                 <td>Lutheran </td>
                 <td><input type="checkbox" name="antigen" value="Lua" onchange="processForm()" /> Lu<sup>a</sup></td>
-                <td><input type="text" id="antFreqLua" value="8" name="antFreqLua" onchange="compatible('antFreqLua','compLua')"></td>
-                <td><input type="text" id="compLua" value="92" readonly /></td>        
+                <td><input type="text" value="8" name="antFreqLua" onchange="compatible('antFreqLua','compLua')"></td>
+                <td><input type="text" name="compLua" value="92" readonly /></td>        
             </tr>
 
             <tr>
                 <td></td>
                 <td><input type="checkbox" name="antigen" value="Lub" onchange="processForm()" /> Lu<sup>b</sup></td>
-                <td><input type="text" id="antFreqLub" value="99.9" name="antFreqLub" onchange="compatible('antFreqLub','compLub')"></td>
-                <td><input type="text" id="compLub" value="0.1" readonly /></td>        
+                <td><input type="text" value="99.9" name="antFreqLub" onchange="compatible('antFreqLub','compLub')"></td>
+                <td><input type="text" name="compLub" value="0.1" readonly /></td>        
             </tr>
            </tbody> 
           </table><br>
@@ -238,11 +239,11 @@
            <input type="checkbox" name="pregnant" value="pregnant" onchange="processForm()"> pregnant  </input>
            <input type="checkbox" name="RhImmuno" value="RhImmuno" onchange="processForm()"> Rh Immunoglobulin  </input><br>
            <input type="checkbox" name="antTiter1" value="antTiter1" onchange="processForm()"> Titer 1</input>
-           <select id="selectAntibody1" onchange="=processForm()">
+           <select name="selectAntibody1" onchange="processForm()">
                 <option>Choose antibody</option>
             </select>
            <select name="titer1" onchange="processForm()">
-                <option value="<1"><1</option>
+                <option value="<1">less than 1</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="4">4</option>
@@ -254,11 +255,11 @@
                 <option value="256">256</option>
             </select>
            <input type="checkbox" name="antTiter2" value="antTiter2" onchange="processForm()"> Titer 2</input>
-           <select id="selectAntibody2" onchange="=processForm()">
+           <select name="selectAntibody2" onchange="processForm()">
                 <option>Choose antibody</option>
             </select>
            <select name="titer2" onchange="processForm()">
-                <option value="<1"><1</option>
+                <option value="<1">less than 1</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="4">4</option>
@@ -296,5 +297,6 @@
             </script>
          <input type="button" value="Select Text" onclick="SelectText('textField')"><br> 
 -->
-       </body>
+       </form>
+        </body>
        </html>
