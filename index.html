@@ -1,40 +1,77 @@
-<html>
-    <head>
-        <title>Blood Group and Antigen Frequencies</title>
-
-        <link rel="stylesheet" href="bootstrap.css">
-        <style>
-            table {
-                border:  1px solid black;
-                display:  inline-block;
-                 }
-            td input {
-                width:  200px;
-                
-            }
-            td input[type="text"] {
-                width:  100px;
-                height: 20px;
-            }
-            textarea {
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Antibody Report Generator</title>
+<style type='text/css'>
+.mask{
+   position: relative;
+   overflow: hidden;
+   margin: 0px auto;
+   width: 99%;
+   background-color: #f4f4f4
+}
+.header{
+   float: left;
+   width: 100%;
+   background-color: #f4f4f4
+}
+.colleft{
+   position: relative;
+   width: 100%;
+   right: 50%;
+   background-color: #f4f4f4
+}
+.col1{
+   position: relative;
+   overflow: hidden;
+   float: left;
+   width: 48%;
+   left: 101%;
+   background-color: #e6e6e6
+}
+.col2{
+   position: relative;
+   overflow: hidden;
+   float: left;
+   width: 48%;
+   left: 3%;
+   background-color: #e6e6e6
+}
+.footer{
+   float: left;
+   width: 100%;
+   background-color: #b4caf7
+}
+body {
+   padding: 0px;
+   margin: 0px;
+   font-size: 90%;
+   background-color: #e7e7de
+}
+textarea {
                 width:800px; 
-                height:200px;
-             }
-        </style>
-        <script type="text/javascript">
-              function compatible(a,b) {
-                var x = document.getElementById(a);
-                var y = document.getElementById(b);
-                y.value = 100 - x.value;
-            }
-        </script>
-        <h3>Blood Group and Antigen Frequencies</h3>
-        <script type="text/javascript" src="script.js"></script>
-      </head>
-    
-    <body>
-       <form name="antigenForm">
-        <table cellpadding="1">
+                height:180px;
+}    
+</style>
+<script type="text/javascript">
+    function compatible(a, b) {
+        var x = document.getElementById(a);
+        var y = document.getElementById(b);
+        y.value = 100 - x.value;
+    }
+</script>
+<script type="text/javascript" src="script.js"></script>
+</head>
+<body>
+     
+<div class="mask">
+    <form name="antigenForm">
+    <div class="header">
+        <h3>Antibody Report Generator</h3>
+    </div>
+    <div class="colleft">
+        <div class="col1">
+<table>
          <thead>
              <th>Blood<br>Group</th>
              <th>Antibody</th>
@@ -134,8 +171,9 @@
             </tr>
         </tbody>
         </table>
-
-        <table cellpadding="1">
+        </div>
+        <div class="col2">
+            <table>
          <thead>
              <th>Blood<br>Group</th>
              <th>Antibody</th>
@@ -226,7 +264,131 @@
                 <td><input type="text" name="compLub" value="0.1" readonly /></td>        
             </tr>
            </tbody> 
-          </table><br>
+          </table>        
+        
+        </div> 
+    </div> 
+    <div class="footer">
+           <input type="checkbox" name="warmAuto" value="warmAuto" onchange="processForm()"> WAA </input>
+           <select name="warmAutoStrength" onchange="processForm()">
+                <option value="weak">weak</option>
+                <option value="strong">strong</option>
+            </select>
+           <input type="checkbox" name="nonspecificReactivity" value="nonspecificReactivity" onchange="processForm()"> Non-specific reactivity </input>
+           <input type="checkbox" name="preSurgery" value="preSurgery" onchange="processForm()"> Pre-Surgery </input><br>
+           <input type="checkbox" name="patientSex" value="male" onchange="processForm()"> male </input><br>
+           <input type="checkbox" name="patientSex" value="female" onchange="processForm()"> female  </input>
+           <input type="checkbox" name="pregnant" value="pregnant" onchange="processForm()"> pregnant  </input>
+           <input type="checkbox" name="RhImmuno" value="RhImmuno" onchange="processForm()"> Rh Immunoglobulin  </input><br>
+           <input type="checkbox" name="antTiter1" value="antTiter1" onchange="processForm()"> Titer 1</input>
+           <select name="selectAntibody1" onchange="processForm()">
+                <option>Choose antibody</option>
+            </select>
+           <select name="titer1" onchange="processForm()">
+                <option value="<1">less than 1</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="4">4</option>
+                <option value="8">8</option>
+                <option value="16">16</option>
+                <option value="32">32</option>
+                <option value="64">64</option>
+                <option value="128">128</option>
+                <option value="256">256</option>
+            </select>
+           <input type="checkbox" name="antTiter2" value="antTiter2" onchange="processForm()"> Titer 2</input>
+           <select name="selectAntibody2" onchange="processForm()">
+                <option>Choose antibody</option>
+            </select>
+           <select name="titer2" onchange="processForm()">
+                <option value="<1">less than 1</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="4">4</option>
+                <option value="8">8</option>
+                <option value="16">16</option>
+                <option value="32">32</option>
+                <option value="64">64</option>
+                <option value="128">128</option>
+                <option value="256">256</option>
+            </select>
+        <input type="button" value="Update Form" onchange="processForm()" />
+        <button type="submit" onchange="processForm()"> Clear Form  </button>
+           <br>
+           <textarea id="textField"></textarea><br> 
+           <input type="text" id="tempNumberAntibodies" value="0" name="tempNumberAntibodies">        
+    </div>
+        </form>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <html>
+    <head>
+        <title>Blood Group and Antigen Frequencies</title>
+
+     <link rel="stylesheet" href="bootstrap.css">
+
+
+        <style>
+            table {
+                border:  1px solid black;
+                                   display:  inline-block; 
+                 }
+            td input {
+                width:  100px;
+                
+            }
+            td input[type="text"] {
+                width:  100px;
+                height: 20px;
+            }
+            textarea {
+                width:800px; 
+                height:200px;
+             }
+        </style>
+        <script type="text/javascript">
+              function compatible(a,b) {
+                var x = document.getElementById(a);
+                var y = document.getElementById(b);
+                y.value = 100 - x.value;
+            }
+        </script>
+        <h3>Blood Group and Antigen Frequencies</h3>
+        <script type="text/javascript" src="script.js"></script>
+      </head>
+    
+    <body>
+       <form name="antigenForm">
+        <div class="wrapper">
+            <div class="header"></div>
+            
+                <div class="left">
+
+    </div>
+    <div class="right">
+        <br>
+         
+         </div>   
+         </div>
            <input type="checkbox" name="warmAuto" value="warmAuto" onchange="processForm()"> WAA </input>
            <select name="warmAutoStrength" onchange="processForm()">
                 <option value="weak">weak</option>
@@ -296,7 +458,8 @@
             }
             </script>
          <input type="button" value="Select Text" onclick="SelectText('textField')"><br> 
--->
+
        </form>
         </body>
        </html>
+-->
