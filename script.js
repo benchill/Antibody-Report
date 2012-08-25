@@ -366,6 +366,12 @@ function processForm() {
     if(patientSex[0].checked && pregnant.checked) {
         document.antigenForm.textField2.value += "???? Are you certain that the patient is a pregnant male?????"+"\r\n"
     };
+if(antigen[15].checked&&antigen[16].checked) {
+    document.antigenForm.textField.value = "You have selected both M and N. M and N are antithetical antigens. "
+    document.antigenForm.textField2.value += "You have selected both anti-M and anti-N. Case study?";
+    document.antigenForm.textField2.value += "\r\n" + "\r\n";
+
+}; 
 // Function to randomized facts diplayed in textField2
 var randomFact3=function(fact1,fact2,fact3){
     var factNumber = (Math.random()*3);
@@ -380,13 +386,96 @@ var randomFact3=function(fact1,fact2,fact3){
      document.antigenForm.textField2.value += fact3;
     };
     };
-var a = "test1";
-var b = "test2";
-var c=  "test3";
-
-//randomFact3(a,b,c);
-  
-
+// Anti-D Pathologist notes
+if(antigen[1].checked) {
+    document.antigenForm.textField2.value += "";
+    document.antigenForm.textField2.value += "\r\n" + "\r\n";
+    var MFact1 = "";
+    var MFact2=""
+    var MFact3=""
+    randomFact3(MFact1, MFact2, MFact3);
+}; 
+// Anti-C Pathologist notes
+if(antigen[2].checked) {
+    document.antigenForm.textField2.value += "";
+    document.antigenForm.textField2.value += "\r\n" + "\r\n";
+    var MFact1 = "";
+    var MFact2=""
+    var MFact3=""
+    randomFact3(MFact1, MFact2, MFact3);
+}; 
+// Anti-E Pathologist notes
+if(antigen[3].checked) {
+    document.antigenForm.textField2.value += "";
+    document.antigenForm.textField2.value += "\r\n" + "\r\n";
+    var MFact1 = "";
+    var MFact2=""
+    var MFact3=""
+    randomFact3(MFact1, MFact2, MFact3);
+}; 
+// Anti-c Pathologist notes
+if(antigen[4].checked) {
+    document.antigenForm.textField2.value += "";
+    document.antigenForm.textField2.value += "\r\n" + "\r\n";
+    var MFact1 = "";
+    var MFact2=""
+    var MFact3=""
+    randomFact3(MFact1, MFact2, MFact3);
+}; 
+// Anti-e Pathologist notes
+if(antigen[5].checked) {
+    document.antigenForm.textField2.value += "";
+    document.antigenForm.textField2.value += "\r\n" + "\r\n";
+    var MFact1 = "";
+    var MFact2=""
+    var MFact3=""
+    randomFact3(MFact1, MFact2, MFact3);
+}; 
+// Anti-K Pathologist notes
+if(antigen[6].checked) {
+    document.antigenForm.textField2.value += "";
+    document.antigenForm.textField2.value += "\r\n" + "\r\n";
+    var MFact1 = "";
+    var MFact2=""
+    var MFact3=""
+    randomFact3(MFact1, MFact2, MFact3);
+}; 
+// Anti-Kpa Pathologist notes
+if(antigen[7].checked) {
+    document.antigenForm.textField2.value += "";
+    document.antigenForm.textField2.value += "\r\n" + "\r\n";
+    var MFact1 = "";
+    var MFact2=""
+    var MFact3=""
+    randomFact3(MFact1, MFact2, MFact3);
+}; 
+// Anti-Jsa Pathologist notes
+if(antigen[8].checked) {
+    document.antigenForm.textField2.value += "";
+    document.antigenForm.textField2.value += "\r\n" + "\r\n";
+    var MFact1 = "";
+    var MFact2=""
+    var MFact3=""
+    randomFact3(MFact1, MFact2, MFact3);
+}; 
+// Anti-M Pathologist notes
+if(antigen[15].checked) {
+    document.antigenForm.textField2.value += "Although anti-M is typically cold reacting and not clincinally significant, anti-M which reacts at 37 degrees Celsius may be clinically significant and may case hemolytic disease of the newborn (HDN).";
+    document.antigenForm.textField2.value += "\r\n" + "\r\n";
+    var MFact1 = "MNS group antigens are inactivated by proteolytic enzymes (such as ficin, papain, trypsin, and bromelin";
+    var MFact2="Anti-M and anti-N both show dosage effects."
+    var MFact3="Anti-M and anti-N are found on a glycoprotein (glycophorin A).  These antigens are present at birth."
+    randomFact3(MFact1, MFact2, MFact3);
+}; 
+// Anti-N Pathologist notes
+if(antigen[16].checked) {
+    document.antigenForm.textField2.value += "Anti-N is typically cold reacting and is not clinically significant unless it reacts at 37 degrees Celsius.  Anti-N rarely causes mild disease of the newborn (HDN).";
+    document.antigenForm.textField2.value += "\r\n" + "\r\n";
+    var MFact1 = "MNS group antigens are inactivated by proteolytic enzymes (such as ficin, papain, trypsin, and bromelin).";
+    var MFact2="Anti-M and anti-N both show dosage effects. Anti-N is less common than anti-M."
+    var MFact3="Anti-M and anti-N are found on a glycoprotein (glycophorin A).  These antigens are present at birth."
+    randomFact3(MFact1, MFact2, MFact3);
+}; 
 };
 
 
