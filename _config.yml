@@ -1,0 +1,8 @@
+title: Antibody-report
+description: Antibody workup report generator
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-tactile
+
+gems:
+  - jekyll-mentions
